@@ -1,1 +1,4 @@
-module.exports = { '*.{js,ts,jsx,tsx,json,css,md}': ['npx biome check --apply'] };
+module.exports = {
+    "*.{js,ts,jsx,tsx,vue,json,css,md}": ["npx biome check --apply"],
+  };
+  
