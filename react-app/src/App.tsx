@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className="todo-app">
-      <h1>React Todo App</h1>
+      <h1>React Todo Application</h1>
       
       <div className="add-todo">
         <input
