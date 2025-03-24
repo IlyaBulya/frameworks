@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "vue-app/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    },
+    {
+      "src": "react-app/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    { "src": "/vue/(.*)", "dest": "/vue-app/$1" },
+    { "src": "/react/(.*)", "dest": "/react-app/$1" },
+    { "src": "/(.*)", "dest": "/react-app/$1" }
+  ]
+}
