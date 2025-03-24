@@ -25,7 +25,7 @@ describe("React Todo App", () => {
 
   test("renders title", () => {
     render(<App />);
-    expect(screen.getByText("React Todo App")).toBeInTheDocument();
+    expect(screen.getByText("React Todo Application")).toBeInTheDocument();
   });
 
   test("renders input and button", () => {
