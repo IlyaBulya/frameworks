@@ -14,7 +14,7 @@
     "format": "npm run format:vue && npm run format:react",
     "format:vue": "cd vue-app && npm run format",
     "format:react": "cd react-app && npm run format",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "keywords": ["vue", "react", "frameworks", "comparison"],
   "author": "",
