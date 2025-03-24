@@ -1,4 +1,4 @@
-# Frameworks Comparison
+# Frameworks Comparison Project
 
 This repository contains implementations of the same Todo application using different JavaScript frameworks:
 
