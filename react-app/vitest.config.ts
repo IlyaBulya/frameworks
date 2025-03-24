@@ -6,6 +6,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "vitest.setup.ts",
+    setupFiles: "./src/setupTests.ts", // Указываем правильный путь
+    include: ["**/*.{test,spec}.{ts,tsx,js,jsx}"], // Глобальный поиск тестов
+    coverage: {
+      reporter: ["text", "json", "html"],
+    },
   },
 });

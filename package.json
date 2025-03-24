@@ -1,16 +1,27 @@
 {
-  "name": "frameworks",
+  "name": "frameworks-comparison",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Comparison of different JavaScript frameworks",
   "scripts": {
-    "test": "echo \"No tests defined\" && exit 0",
-    "prepare": "husky install"
+    "dev:vue": "cd vue-app && npm run dev",
+    "dev:react": "cd react-app && npm run dev",
+    "test": "npm run test:vue && npm run test:react",
+    "test:vue": "cd vue-app && npm test -- --run",
+    "test:react": "cd react-app && npm test -- --run",
+    "lint": "npm run lint:vue && npm run lint:react",
+    "lint:vue": "cd vue-app && npm run lint",
+    "lint:react": "cd react-app && npm run lint",
+    "format": "npm run format:vue && npm run format:react",
+    "format:vue": "cd vue-app && npm run format",
+    "format:react": "cd react-app && npm run format",
+    "prepare": "husky"
   },
-  "keywords": [],
+  "keywords": ["vue", "react", "frameworks", "comparison"],
   "author": "",
-  "license": "ISC",
-  "description": "",
+  "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.0"
+    "@biomejs/biome": "^1.5.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2"
   }
 }

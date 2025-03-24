@@ -15,4 +15,11 @@ expect.extend({
       message: () => `expected ${received} to be in the document`,
     };
   },
+  toHaveValue(received, expected) {
+    const pass = received.value === expected;
+    return {
+      pass,
+      message: () => `expected ${received} to have value ${expected}`,
+    };
+  },
 });

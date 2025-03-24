@@ -5,12 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc -p tsconfig.app.json && vite build",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx biome check .",
-    "format": "npx biome format .",
-    "prepare": "husky install"
+    "format": "npx biome format ."
   },
   "dependencies": {
     "vue": "^3.5.13"
@@ -21,7 +20,6 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
     "biome": "^0.3.3",
-    "husky": "^8.0.0",
     "jsdom": "^26.0.0",
     "lint-staged": "^15.5.0",
     "typescript": "~5.7.2",
