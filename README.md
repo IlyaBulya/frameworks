@@ -144,3 +144,4 @@ The pre-commit hook will:
 1. Run tests to ensure all functionality works
 2. Check and fix linting issues
 3. Format code according to project standards
+цымым
