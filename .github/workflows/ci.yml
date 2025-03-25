@@ -31,10 +31,10 @@ jobs:
         run : cd vue-app && npm run
       
       - name: Type check Vue
-        run: cd vue-app && npm run types:vue
+        run: cd vue-app && npm run types
       
       - name: Type check React
-        run: cd react-app && npx tsc --noEmit -p tsconfig.app.json
+        run: cd react-app && npm run types
       
       - name: Run tests
         run: npm test

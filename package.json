@@ -13,7 +13,6 @@
     "lint:react": "cd react-app && npm run lint",
     "format": "npm run format:vue && npm run format:react",
     "format:vue": "cd vue-app && npm run format",
-    "types:vue": "cd vue-app && npm run types",
     "format:react": "cd react-app && npm run format",
     "prepare": "husky install"
   },

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -p tsconfig.app.json && vite build",
+    "types": "vue-tsc -p tsconfig.app.json",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx biome check .",
