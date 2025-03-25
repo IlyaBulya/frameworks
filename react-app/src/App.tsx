@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 interface Todo {
@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchTodos = async (checkMounted = false, isMounted = true) => {
+  const fetchTodos = useCallback(async (checkMounted = false, isMounted = true) => {
     try {
       setLoading(true);
       setError(null);
@@ -34,7 +34,7 @@ function App() {
         setLoading(false);
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -44,7 +44,7 @@ function App() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [fetchTodos]);
 
   const addTodo = () => {
     if (!newTodo.trim()) return;
@@ -82,12 +82,13 @@ function App() {
           onChange={(e) => setNewTodo(e.target.value)}
           placeholder="Add a new todo"
         />
-        <button data-testid="add-todo-button" onClick={addTodo}>
+        <button type="button" data-testid="add-todo-button" onClick={addTodo}>
           Add
         </button>
       </div>
       
       <button 
+        type="button"
         className="fetch-button" 
         data-testid="fetch-todos-button" 
         onClick={() => fetchTodos()}
@@ -118,6 +119,7 @@ function App() {
             />
             <span>{todo.title}</span>
             <button
+              type="button"
               className="delete-btn"
               onClick={() => deleteTodo(todo.id)}
               data-testid="delete-todo-button"
