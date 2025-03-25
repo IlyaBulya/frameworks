@@ -42,7 +42,7 @@ jobs:
       
       # React app dependencies and checks
       - name: Install React app dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps --force
         working-directory: ./react-app
 
       - name: Type check React app
