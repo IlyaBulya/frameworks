@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "types": "tsc -p tsconfig.app.json",
     "build": "tsc -p tsconfig.app.json && vite build",
     "lint": "npx biome check .",
     "format": "npx biome format .",
