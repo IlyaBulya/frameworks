@@ -18,23 +18,38 @@ jobs:
           node-version: '20'
           cache: 'npm'
       
-      - name: Install dependencies
+      # Root project dependencies and checks
+      - name: Install root dependencies
         run: npm ci
+        working-directory: .
       
-      - name: Lint
+      - name: Lint root project
         run: npm run lint
+        working-directory: .
       
-      - name: Format check
+      - name: Format check root project
         run: npx biome check .
+        working-directory: .
       
-      - name: Show available scripts in Vue
-        run : cd vue-app && npm run
+      # Vue app dependencies and checks
+      - name: Install Vue app dependencies
+        run: npm ci
+        working-directory: ./vue-app
+    
+      - name: Type check Vue app
+        run: npm run types
+        working-directory: ./vue-app
       
-      - name: Type check Vue
-        run: cd vue-app && npm run types
+      # React app dependencies and checks
+      - name: Install React app dependencies
+        run: npm ci
+        working-directory: ./react-app
+
+      - name: Type check React app
+        run: npm run types
+        working-directory: ./react-app
       
-      - name: Type check React
-        run: cd react-app && npm run types
-      
+      # Run tests from root
       - name: Run tests
         run: npm test
+        working-directory: .
