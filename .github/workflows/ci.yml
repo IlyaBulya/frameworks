@@ -28,7 +28,7 @@ jobs:
         run: npx biome check .
       
       - name: Type check Vue
-        run: cd vue-app && npx vue-tsc --noEmit
+        run: cd vue-app && vue-tsc -p tsconfig.app.json
       
       - name: Type check React
         run: cd react-app && npx tsc --noEmit -p tsconfig.app.json
