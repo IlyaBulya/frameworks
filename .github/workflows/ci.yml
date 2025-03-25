@@ -40,7 +40,7 @@ jobs:
       # React app dependencies and checks
       - name: Install React app dependencies
         working-directory: ./react-app
-        run: npm ci
+        run: npm i --legacy-peer-deps --force
         
       # Add missing dependency for React tests
       - name: Install missing testing-library/dom dependency
