@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import "./App.css";
+import { useState, useEffect, useCallback } from 'react';
+import './App.css';
 
 interface Todo {
   id: number;
@@ -9,7 +9,7 @@ interface Todo {
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [newTodo, setNewTodo] = useState("");
+  const [newTodo, setNewTodo] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,10 +19,10 @@ function App() {
         setLoading(true);
         setError(null);
         const response = await fetch(
-          "https://jsonplaceholder.typicode.com/todos?_limit=5"
+          'https://jsonplaceholder.typicode.com/todos?_limit=5'
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch todos");
+          throw new Error('Failed to fetch todos');
         }
         const data = await response.json();
         if (!checkMounted || isMounted) {
@@ -30,7 +30,7 @@ function App() {
         }
       } catch (err) {
         if (!checkMounted || isMounted) {
-          setError(err instanceof Error ? err.message : "Unknown error");
+          setError(err instanceof Error ? err.message : 'Unknown error');
         }
       } finally {
         if (!checkMounted || isMounted) {
@@ -61,7 +61,7 @@ function App() {
     };
 
     setTodos([...todos, newTodoItem]);
-    setNewTodo("");
+    setNewTodo('');
   };
 
   const toggleTodo = (id: number) => {
@@ -121,7 +121,7 @@ function App() {
         {todos.map((todo) => (
           <li
             key={todo.id}
-            className={todo.completed ? "completed" : ""}
+            className={todo.completed ? 'completed' : ''}
             data-testid="todo-item"
           >
             <input

@@ -1,8 +1,8 @@
-import { expect, vi } from "vitest";
-import "@testing-library/jest-dom";
+import { expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
 
 // Declare global fetch if not already declared
-if (typeof globalThis.fetch === "undefined") {
+if (typeof globalThis.fetch === 'undefined') {
   globalThis.fetch = vi.fn();
 }
 

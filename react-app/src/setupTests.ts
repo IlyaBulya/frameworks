@@ -1,5 +1,5 @@
-import { expect, vi } from "vitest";
-import "@testing-library/jest-dom";
+import { expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
 
 // Remove duplicate global fetch declaration
 

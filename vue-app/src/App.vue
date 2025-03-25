@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from 'vue';
 
 interface Todo {
   id: number;
@@ -63,7 +63,7 @@ interface Todo {
 }
 
 const todos = ref<Todo[]>([]);
-const newTodo = ref("");
+const newTodo = ref('');
 const loading = ref(true);
 const error = ref<string | null>(null);
 
@@ -72,14 +72,14 @@ const fetchTodos = async () => {
     loading.value = true;
     error.value = null;
     const response = await fetch(
-      "https://jsonplaceholder.typicode.com/todos?_limit=5"
+      'https://jsonplaceholder.typicode.com/todos?_limit=5'
     );
     if (!response.ok) {
-      throw new Error("Failed to fetch todos");
+      throw new Error('Failed to fetch todos');
     }
     todos.value = await response.json();
   } catch (err) {
-    error.value = err instanceof Error ? err.message : "Unknown error";
+    error.value = err instanceof Error ? err.message : 'Unknown error';
   } finally {
     loading.value = false;
   }
@@ -95,7 +95,7 @@ const addTodo = () => {
   };
 
   todos.value.push(newTodoItem);
-  newTodo.value = "";
+  newTodo.value = '';
 };
 
 const toggleTodo = (id: number) => {
