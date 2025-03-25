@@ -61,7 +61,9 @@ li.completed span {
   border-radius: 4px;
 }
 
-.loading, .error, .empty-list {
+.loading,
+.error,
+.empty-list {
   text-align: center;
   padding: 10px;
   margin-top: 20px;
