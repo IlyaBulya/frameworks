@@ -27,6 +27,9 @@ jobs:
       - name: Format check
         run: npx biome check .
       
+      - name: Show available scripts in Vue
+        run : cd vue-app && npm run
+      
       - name: Type check Vue
         run: cd vue-app && npm run types:vue
       
