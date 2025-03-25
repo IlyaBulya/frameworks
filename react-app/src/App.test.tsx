@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import App from "./App";
 
 // Mock fetch API
-global.fetch = vi.fn();
+window.fetch = vi.fn();
 
 function createFetchResponse(data: any) {
   return { 

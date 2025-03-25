@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import App from "../App.vue";
 
 // Mock fetch API
-global.fetch = vi.fn();
+globalThis.fetch = vi.fn();
 
 function createFetchResponse(data: any) {
   return {

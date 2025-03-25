@@ -13,7 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchTodos = async () => {
+  const fetchTodos = async (checkMounted = false, isMounted = true) => {
     try {
       setLoading(true);
       setError(null);
@@ -22,16 +22,28 @@ function App() {
         throw new Error("Failed to fetch todos");
       }
       const data = await response.json();
-      setTodos(data);
+      if (!checkMounted || isMounted) {
+        setTodos(data);
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error");
+      if (!checkMounted || isMounted) {
+        setError(err instanceof Error ? err.message : "Unknown error");
+      }
     } finally {
-      setLoading(false);
+      if (!checkMounted || isMounted) {
+        setLoading(false);
+      }
     }
   };
 
   useEffect(() => {
-    fetchTodos();
+    let isMounted = true;
+    
+    fetchTodos(true, isMounted);
+    
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const addTodo = () => {
@@ -78,7 +90,7 @@ function App() {
       <button 
         className="fetch-button" 
         data-testid="fetch-todos-button" 
-        onClick={fetchTodos}
+        onClick={() => fetchTodos()}
       >
         Refresh Todos
       </button>

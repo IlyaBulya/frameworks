@@ -1,10 +1,7 @@
 import { expect, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-// Declare global fetch
-declare global {
-  var fetch: any;
-}
+// Remove duplicate global fetch declaration
 
 // Add jest-dom matchers
 expect.extend({

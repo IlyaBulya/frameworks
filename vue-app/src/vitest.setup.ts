@@ -1,9 +1,9 @@
 import { expect, vi } from "vitest";
 import "@testing-library/jest-dom";
 
-// Declare global fetch
-declare global {
-  var fetch: any;
+// Declare global fetch if not already declared
+if (typeof globalThis.fetch === "undefined") {
+  globalThis.fetch = vi.fn();
 }
 
 // Add jest-dom matchers

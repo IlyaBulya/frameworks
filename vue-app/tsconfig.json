@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    // other options
+    "lib": ["ES2015", "DOM"]
   }
 }

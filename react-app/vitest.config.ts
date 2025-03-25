@@ -9,6 +9,7 @@ export default defineConfig({
     setupFiles: "./vitest.setup.ts",
     include: ["**/*.{test,spec}.{ts,tsx,js,jsx}"], // Глобальный поиск тестов
     coverage: {
+      provider: "istanbul",
       reporter: ["text", "json", "html"],
     },
   },
