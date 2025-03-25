@@ -13,34 +13,39 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchTodos = useCallback(async (checkMounted = false, isMounted = true) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=5");
-      if (!response.ok) {
-        throw new Error("Failed to fetch todos");
+  const fetchTodos = useCallback(
+    async (checkMounted = false, isMounted = true) => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/todos?_limit=5"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch todos");
+        }
+        const data = await response.json();
+        if (!checkMounted || isMounted) {
+          setTodos(data);
+        }
+      } catch (err) {
+        if (!checkMounted || isMounted) {
+          setError(err instanceof Error ? err.message : "Unknown error");
+        }
+      } finally {
+        if (!checkMounted || isMounted) {
+          setLoading(false);
+        }
       }
-      const data = await response.json();
-      if (!checkMounted || isMounted) {
-        setTodos(data);
-      }
-    } catch (err) {
-      if (!checkMounted || isMounted) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-      }
-    } finally {
-      if (!checkMounted || isMounted) {
-        setLoading(false);
-      }
-    }
-  }, []);
+    },
+    []
+  );
 
   useEffect(() => {
     let isMounted = true;
-    
+
     fetchTodos(true, isMounted);
-    
+
     return () => {
       isMounted = false;
     };
@@ -48,13 +53,13 @@ function App() {
 
   const addTodo = () => {
     if (!newTodo.trim()) return;
-    
+
     const newTodoItem: Todo = {
       id: Date.now(),
       title: newTodo,
       completed: false,
     };
-    
+
     setTodos([...todos, newTodoItem]);
     setNewTodo("");
   };
@@ -74,7 +79,7 @@ function App() {
   return (
     <div className="todo-app">
       <h1>React Todo Application</h1>
-      
+
       <div className="add-todo">
         <input
           data-testid="new-todo-input"
@@ -86,24 +91,32 @@ function App() {
           Add
         </button>
       </div>
-      
-      <button 
+
+      <button
         type="button"
-        className="fetch-button" 
-        data-testid="fetch-todos-button" 
+        className="fetch-button"
+        data-testid="fetch-todos-button"
         onClick={() => fetchTodos()}
       >
         Refresh Todos
       </button>
-      
-      {loading && <div data-testid="loading-indicator" className="loading">Loading...</div>}
-      
-      {error && <div data-testid="error-message" className="error">Error: {error}</div>}
-      
+
+      {loading && (
+        <div data-testid="loading-indicator" className="loading">
+          Loading...
+        </div>
+      )}
+
+      {error && (
+        <div data-testid="error-message" className="error">
+          Error: {error}
+        </div>
+      )}
+
       {!loading && !error && todos.length === 0 && (
         <div className="empty-list">No todos found. Add some!</div>
       )}
-      
+
       <ul className="todo-list" data-testid="todo-list">
         {todos.map((todo) => (
           <li
