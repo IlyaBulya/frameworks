@@ -5,7 +5,7 @@ module.exports = {
 
     const filePaths = files.join(' ');
     return [
-      `npx biome format --write .`,
+      'npx biome format --write .',
       `npx biome check --write ${filePaths}`,
     ];
   },
